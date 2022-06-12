@@ -7,11 +7,14 @@ So decided to give it a try.
 
 ----
 
-## I Started with the basics:
+## Started with the basics:
 - https://dash.plotly.com/installation
 - https://dash.plotly.com/layout
 
-## Next target:
+## Sneak peek of current progress
+![Progress Week #1](images/progress-week1.png "Progress Week #1")
+
+## Target:
 - https://towardsdatascience.com/create-a-professional-dasbhoard-with-dash-and-css-bootstrap-e1829e238fc5
 
 ## TODOS:
