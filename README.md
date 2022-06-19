@@ -22,10 +22,10 @@ So decided to give it a try.
 - [x] Data Tables
 - [x] Graph
 - [x] Reference Rates
-- [ ] Refactor code to be more reusable
+- [ ] Refactor code to be more reusable (in progress)
 - [ ] Kijang Emas
 - [ ] Exchange Rates
-- [ ] multi-page dashboard
-- [ ] own custom css
+- [x] multi-page dashboard
+- [x] use bootstrap
 - [ ] authenticated API calls (other APIs)
-- [ ] LDAP SSO
+- [ ] LDAP SSO (seems to be available on enterprise copies only)
