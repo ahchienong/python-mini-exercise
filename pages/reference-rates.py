@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 import json
 import datetime
-from utils.common import construct_url, call_thebank_api, prepare_df, generate_data_table, generate_filters, generate_year_dropdowns, generate_month_dropdowns
+from utils.common import construct_url, call_thebank_api, prepare_df, generate_data_table, generate_ref_rates_filters
 
 dash.register_page(
     __name__, 
@@ -54,9 +54,8 @@ def generate_ref_rates(options={}):
     else:
         return html.Div(
         id='ref_rates',
-        children=[html.H3(children='Reference Rates'),
+        children=[html.H3(children='Tabular Data'),
             html.H6(children="Called API: " + api_url),
-            # html.Code(children=str(_ref_rates)),
             html.Details([
                 html.Summary('API Response'),
                 dcc.Markdown(
@@ -83,7 +82,7 @@ layout = html.Div(children=[
     html.H1(children='Kuala Lumpur USD/MYR Reference Rate'),
     html.H6(children='A reference rate that is computed based on weighted average volume of the interbank USD/MYR FX spot rate transacted by the domestic financial institutions and published daily at 3:30 p.m.'),
     html.Br(),
-    generate_filters(),
+    generate_ref_rates_filters(),
     html.Br(),
     generate_ref_rates()
 ])

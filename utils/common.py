@@ -37,11 +37,19 @@ def generate_data_table(id,data_frame):
         page_action='none')
     return dt
 
-def generate_filters():
+def generate_ref_rates_filters():
     return html.Div(
         id='filters',
         children=[  html.Div("Select Year",className="filters-item"), generate_year_dropdowns(),
                     html.Div("Select Month",className="filters-item"), generate_month_dropdowns()
+        ],
+        className="filters"
+    )
+
+def generate_exchange_rates_filters():
+    return html.Div(
+        id='filters',
+        children=[  html.Div("Select Country",className="filters-item"), generate_country_dropdowns()
         ],
         className="filters"
     )
@@ -79,6 +87,46 @@ def generate_month_dropdowns():
                 },
                 value='6',
                 id='month-dropdown',
+                clearable=False,
+                style=dict(
+                    width='50%',
+                    verticalAlign="middle"
+                )
+            )
+
+def generate_country_dropdowns():
+    return dcc.Dropdown(
+                options={
+                'CHF': 'Swiss Franc',
+                'CAD': 'Canadian Dollar',
+                'BND': 'Bruneian Dollar',
+                'AUD': 'Australian Dollar',
+                'AED': 'UAE Dirham',
+                'CNY': 'Chinese Yuan',
+                'NPR': 'Nepalese Rupee',
+                'VND': 'Vietnamese Dong',
+                'USD': 'US Dollar',
+                'TWD': 'Taiwan New Dollar',
+                'THB': 'Thai Baht',
+                'SGD': 'Singapore Dollar',
+                'SAR': 'Saudi Arabian Riyal',
+                'PKR': 'Pakistani Rupee',
+                'PHP': 'Philippine Peso',
+                'NZD': 'New Zealand Dollar',
+                'MMK': 'Burmese Kyat',
+                'KRW': 'South Korean Won',
+                'KHR': 'Cambodian Riel',
+                'JPY': 'Japanese Yen',
+                'INR': 'Indian Rupee',
+                'IDR': 'Indonesian Rupiah',
+                'HKD': 'Hong Kong Dollar',
+                'GBP': 'Great British Pound',
+                'EUR': 'Euro',
+                'EGP': 'Egyptian Pound',
+                },
+                value='USD',
+                multi=True,
+                id='country-dropdown',
                 clearable=False,
                 style=dict(
                     width='50%',
