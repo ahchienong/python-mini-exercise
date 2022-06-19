@@ -12,7 +12,8 @@ So decided to give it a try.
 - https://dash.plotly.com/layout
 
 ## Sneak peek of current progress
-![Progress Week #1](images/progress-week1.png "Progress Week #1")
+![Progress Week #1](images/progress-week2-1.png "Progress Week #2.1")
+![Progress Week #1](images/progress-week2-2.png "Progress Week #2.2")
 
 ## Target:
 - https://towardsdatascience.com/create-a-professional-dasbhoard-with-dash-and-css-bootstrap-e1829e238fc5
@@ -22,10 +23,10 @@ So decided to give it a try.
 - [x] Data Tables
 - [x] Graph
 - [x] Reference Rates
-- [ ] Refactor code to be more reusable (in progress)
-- [ ] Kijang Emas
-- [ ] Exchange Rates
 - [x] multi-page dashboard
 - [x] use bootstrap
+- [ ] Refactor code to be more reusable (on-going)
+- [ ] Exchange Rates (work in progress)
+- [ ] Kijang Emas
 - [ ] authenticated API calls (other APIs)
 - [ ] LDAP SSO (seems to be available on enterprise copies only)
