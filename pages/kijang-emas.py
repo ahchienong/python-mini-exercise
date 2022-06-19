@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 import json
 import datetime
-from utils.common import construct_url, call_thebank_api, prepare_df, generate_data_table, generate_filters, generate_year_dropdowns, generate_month_dropdowns
+from utils.common import construct_url, call_thebank_api, prepare_df, generate_data_table, generate_ref_rates_filters
 
 dash.register_page(
     __name__, 
@@ -139,7 +139,7 @@ def trigger_api(year_value,month_value):
 layout = html.Div(children=[
     html.H1(children='Kijang Emas'),
     html.Br(),
-    generate_filters(),
+    generate_ref_rates_filters(),
     generate_ref_rates(),
     html.Br(),
     html.H3('--WIP--'),
