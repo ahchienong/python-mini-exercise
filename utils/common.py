@@ -39,9 +39,13 @@ def generate_data_table(id,data_frame):
 
 def generate_filters():
     return html.Div(
-    id='filters',
-    children=[  html.Div("Select Year",style={'margin-right': '2em'}), generate_year_dropdowns(),
-                html.Div("Select Month",style={'margin-right': '2em'}), generate_month_dropdowns()],style=dict(display = 'flex'))
+        id='filters',
+        children=[  html.Div("Select Year",className="filters-item"), generate_year_dropdowns(),
+                    html.Div("Select Month",className="filters-item"), generate_month_dropdowns()
+        ],
+        className="filters"
+    )
+
 def generate_year_dropdowns():
     return dcc.Dropdown(
                 options={

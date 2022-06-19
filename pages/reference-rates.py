@@ -39,8 +39,7 @@ def generate_ref_rates(options={}):
 
         return html.Div(
         id='ref_rates',
-        children=[html.H3(children='Reference Rates'),
-            html.Br(),
+        children=[html.H5(children='Tabular Data'),
             generate_data_table("ref_rates-table",_ref_rates_df),
             generate_graph("ref_rates-graph", "Reference Rates (" + f'{options["year"]}' + " - " + f'{options["month"]}' + ")", _ref_rates_df),
             html.Hr(),
@@ -80,8 +79,11 @@ def trigger_api(year_value,month_value):
     return generate_ref_rates(options)
 
 layout = html.Div(children=[
-    html.H1(children='Reference Rates'),
+    html.Br(),
+    html.H1(children='Kuala Lumpur USD/MYR Reference Rate'),
+    html.H6(children='A reference rate that is computed based on weighted average volume of the interbank USD/MYR FX spot rate transacted by the domestic financial institutions and published daily at 3:30 p.m.'),
     html.Br(),
     generate_filters(),
+    html.Br(),
     generate_ref_rates()
 ])

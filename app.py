@@ -8,8 +8,15 @@ from layouts import sidebar
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], use_pages=True)
 app.config.suppress_callback_exceptions = True
+app.css.config.serve_locally = True
+app.scripts.config.serve_locally = True
+
 app.layout = html.Div(
     children=[
+        html.Link(
+            rel='stylesheet',
+            href='/assets/custom.css'
+        ),
         html.A(
             href='/' ,
             children=[html.Img(
@@ -23,6 +30,12 @@ app.layout = html.Div(
         dash.page_container,
         # generate_kijang_emas()
     ], style = {'margin':'30px'})
+
+
+@app.server.route('/assets/<path:path>')
+def static_file(path):
+    static_folder = os.path.join(os.getcwd(), 'assets')
+    return send_from_directory(static_folder, path)
 
 if __name__ == '__main__':
     app.run_server(debug=True)

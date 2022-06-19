@@ -1,0 +1,16 @@
+.filters {
+    display: flex;
+    background-color: lightgrey;
+    padding: 1em;
+    border-radius: 1em;
+}
+.filters-item {
+    margin-right: 2em;
+}
+.filters-item-val {
+    width: 50%;
+    vertical-align: middle;
+}
+.codes {
+    color: dimgray;
+}
