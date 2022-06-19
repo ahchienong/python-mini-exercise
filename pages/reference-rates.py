@@ -54,18 +54,17 @@ def generate_ref_rates(options={}):
         return html.Div(
         id='ref_rates',
         children=[html.H3(children='Reference Rates'),
+            html.Br(),
+            generate_data_table("ref_rates-table",_ref_rates_df),
+            generate_graph("ref_rates-graph", "Reference Rates (" + f'{options["year"]}' + " - " + f'{options["month"]}' + ")", _ref_rates_df),
+            html.Hr(),
             html.H6(children="Called API: " + api_url),
-            # html.Code(children=str(_ref_rates)),
             html.Details([
                 html.Summary('API Response'),
                 dcc.Markdown(
                     children='```\n'+json.dumps(_ref_rates, indent=2)+'\n```'
                 )
             ]),
-            html.Br(),
-            generate_data_table("ref_rates-table",_ref_rates_df),
-            generate_graph("ref_rates-graph", "Reference Rates (" + f'{options["year"]}' + " - " + f'{options["month"]}' + ")", _ref_rates_df),
-            html.Hr()
         ])
     else:
         return html.Div(
@@ -140,13 +139,5 @@ layout = html.Div(children=[
     html.H1(children='Reference Rates'),
     html.Br(),
     generate_filters(),
-    generate_ref_rates(),
-    html.Br(),
-    html.H3('--WIP--'),
-    # generate_exchange_rate()
-    html.H3(children='Exchange Rates: ('+EXCHANGE_RATE+')'),
-    html.Code(children=str(_exchange_rates)),
-    html.H3(children='Kijang Emas: ('+KIJANG_EMAS+')'),
-    html.Code(children=str(_kijang_emas)),
-
+    generate_ref_rates()
 ])
