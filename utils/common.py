@@ -33,6 +33,8 @@ def generate_data_table(id,data_frame):
             'whiteSpace': 'normal',
             'textAlign': 'left'
         },
+        row_selectable='multi',
+        selected_rows=[],
         virtualization=True,
         page_action='none')
     return dt
