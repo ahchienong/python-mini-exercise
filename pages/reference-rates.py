@@ -35,17 +35,21 @@ def generate_ref_rates(options={}):
     _ref_rates = call_thebank_api(api_url)
     print(_ref_rates)
     if _ref_rates['data'] != []:
+        _last_update = _ref_rates['meta']['last_updated']
+        
         _ref_rates_df = prepare_df(_ref_rates)
 
         return html.Div(
         id='ref_rates',
-        children=[html.H5(children='Tabular Data'),
+        children=[
+            html.H5(children='Tabular Data'),
+            html.P(children='last update: ' + _last_update, className='codes'),
             generate_data_table("ref_rates-table",_ref_rates_df),
             generate_graph("ref_rates-graph", "Reference Rates (" + f'{options["year"]}' + " - " + f'{options["month"]}' + ")", _ref_rates_df),
             html.Hr(),
-            html.H6(children="Called API: " + api_url),
+            html.H6(children="Called API: " + api_url, className='codes'),
             html.Details([
-                html.Summary('API Response'),
+                html.Summary('API Response', className='codes'),
                 dcc.Markdown(
                     children='```\n'+json.dumps(_ref_rates, indent=2)+'\n```'
                 )
