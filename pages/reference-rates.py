@@ -17,8 +17,6 @@ dash.register_page(
 
 # CONSTANTS
 REF_RATE = "https://api.bnm.gov.my/public/kl-usd-reference-rate/year/{0}/month/{1}"
-EXCHANGE_RATE = "https://api.bnm.gov.my/public/exchange-rate"
-KIJANG_EMAS = "https://api.bnm.gov.my/public/kijang-emas"
 
 current_time = datetime.datetime.now()
 
@@ -27,18 +25,6 @@ def generate_graph(id,title,data_frame):
         id=id,
         figure=px.line(data_frame, x="date", y="rate", render_mode="svg",title=title)
     )
-
-# def generate_table(dataframe, max_rows=10):
-#     return html.Table([
-#         html.Thead(
-#             html.Tr([html.Th(col) for col in dataframe.columns])
-#         ),
-#         html.Tbody([
-#             html.Tr([
-#                 html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
-#             ]) for i in range(min(len(dataframe), max_rows))
-#         ])
-#     ],style={'textAlign': 'left', 'border-style': 'solid'})
 
 def generate_ref_rates(options={}):
     if options=={}:
@@ -82,48 +68,6 @@ def generate_ref_rates(options={}):
             html.Div(children='Data not available'),
             html.Hr()
         ])
-    
-def generate_kijang_emas():
-    _kijang_emas = call_thebank_api(KIJANG_EMAS)
-    _kijang_emas_df = prepare_df(_kijang_emas)
-
-    return html.Div(
-    id='kijang_emas',
-    children=[html.H3(children='Kijang Emas'),
-        html.H6(children="Called API: " + KIJANG_EMAS),
-        html.Details([
-            html.Summary('API Response'),
-            dcc.Markdown(
-                children='```\n'+json.dumps(_kijang_emas_df, indent=2)+'\n```'
-            )
-        ]),
-        html.Br(),
-        # generate_dt(_kijang_emas_df),
-        # generate_graph(_kijang_emas_df),
-        html.Hr()
-    ])
-def generate_exchange_rates():
-    _exchange_rates = call_thebank_api(EXCHANGE_RATE)
-    _exchange_rates_df = prepare_df(_exchange_rates)
-
-    return html.Div(
-    id='exchange_rate',
-    children=[html.H3(children='Exchange Rates'),
-        html.H6(children="Called API: " + EXCHANGE_RATE),
-        html.Details([
-            html.Summary('API Response'),
-            dcc.Markdown(
-                children='```\n'+json.dumps(_exchange_rates, indent=2)+'\n```'
-            )
-        ]),
-        html.Br(),
-        # generate_dt(_exchange_rates_df),
-        # generate_graph(_exchange_rates_df),
-        html.Hr()
-    ])
-
-_kijang_emas = call_thebank_api(KIJANG_EMAS)
-_exchange_rates = call_thebank_api(EXCHANGE_RATE)
 
 @callback(
     Output("ref_rates", component_property='children'),
